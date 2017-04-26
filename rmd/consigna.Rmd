@@ -1,6 +1,8 @@
 ---
 title: "Laboratorio de Regresión"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +13,8 @@ Crea un nuevo proyecto y a continuación descarga descarga el modelo de informe
 usando la siguiente función en la consola:
 
 ```{r eval=FALSE}
-download.file("https://raw.githubusercontent.com/EstadisticaUNTDF/05-Regresion/master/rmd/lab9.Rmd", destfile = "lab1.Rmd")
+download.file("http://ow.ly/O9PC30bcwZH",
+              destfile = "lab1.Rmd")
 ```
 
 #Bateando
@@ -115,7 +118,7 @@ una para cada una de las 30 observaciones. Recuerden que los residuales son
 la diferencia entre los valores observados y los predichos por la línea:
 
 
-$$e_i=y_i−\hat y_i$$
+$$e_i=y_i-\hat y_i$$
 
 La forma más común de hacer la regresión lineal es seleccionar la línea que 
 minimiza la suma de los cuadrados de los residuales. Para visualizar los 
@@ -166,7 +169,7 @@ muestra a continuación es clave; la primer columna muestra la ordenada al orige
 y el coeficiente de `at_bats`. Con esta tabla podemos escribir la ecuación de
 regresión mínimos cuadrados para la línea de regresión del modelo linear:
 
-$$\hat y=−2789.2429+0.6305\times at\_bats$$
+$$\hat y= -2789.2429+0.6305\times at\_bats$$
 
 Lo último que vamos a discutir del resumen de la salida es la R-Cuadrado 
 múltiple o simplemente $R^2$. El valor de $R^2$ representa la proporción de 
