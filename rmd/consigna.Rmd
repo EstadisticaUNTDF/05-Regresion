@@ -11,7 +11,7 @@ Crea un nuevo proyecto y a continuación descarga descarga el modelo de informe
 usando la siguiente función en la consola:
 
 ```{r eval=FALSE}
-download.file("https://raw.githubusercontent.com/EstadisticaUNTDF/05-Regresion/master/rmd/lab1.Rmd", destfile = "lab1.Rmd")
+download.file("https://raw.githubusercontent.com/EstadisticaUNTDF/05-Regresion/master/rmd/lab9.Rmd", destfile = "lab1.Rmd")
 ```
 
 #Bateando
