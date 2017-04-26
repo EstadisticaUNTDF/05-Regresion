@@ -1,0 +1,58 @@
+---
+title: "PrÃ¡ctico RegresiÃ³n"
+output:
+  word_document: default
+  html_notebook: default
+---
+
+
+Un aserradero quiere construir un modelo para predecir el volumen de madera
+de los troncos de losárboles. Tiene datos del volumen y perímetro de cada uno.
+El gráfico de dispersión muestra la relación entre ellos, y la tabla tiene
+los datos necesarios para construir la regresión lineal.
+
+
+```{r include=FALSE}
+library(ggplot2)
+library(pander)
+library(tidyverse)
+knitr::opts_chunk$set(echo = FALSE)
+trees <- read.table("../data/trees.txt", header = TRUE)
+
+```
+
+```{r fig.height=3, fig.width=3}
+ggplot(trees, aes(Girth, Volume)) + geom_point() +
+  labs(x = "Perímetro", y = "Volumen") + 
+  theme_classic()
+```
+
+```{r}
+mv <- trees %>% 
+  gather(variable, value) %>% 
+  group_by(variable) %>% 
+  summarise(media = mean(value),
+            varianza = var(value))
+
+x_mean <- paste0("$\\bar{x}=", round(mv$media[mv$variable == "Girth"], 2), "$")
+y_mean <- paste0("$\\bar{y}=", round(mv$media[mv$variable == "Volume"], 2),"$")
+
+x_var <- paste0("$S_\\bar{x}=", round(mv$media[mv$variable == "Girth"], 2), "$")
+y_var <- paste0("$S_\\bar{y}=", round(mv$media[mv$variable == "Volume"], 2), "$")
+
+corr <- paste0("$R=", round(with(trees, cor(Girth, Volume)), 2), "$")
+
+columnas <- c("&nbsp;", "Volumen (m^3^) (y) ", "Perímetro (m) (x)")
+medias <- c("Medias", y_mean, x_mean)
+varianza <- c("Varianza", y_var, x_var)
+correlacion <- c("&nbsp;", "Correlación", corr)
+tabla <- rbind(columnas, medias, varianza, correlacion)
+row.names(tabla) <- NULL
+pander(tabla)
+```
+
+1. Calcula la pendiente:
+2. Calcula la ordenada al origen:
+3. Escribe el modelo completo:
+
+
