@@ -120,7 +120,8 @@ $(document).ready(function () {
 </div>
 
 
-<pre class="r"><code>download.file(&quot;http://stat.duke.edu/courses/Spring16/sta101.001/rmd/lab9.Rmd&quot;, destfile = &quot;lab9.Rmd&quot;)</code></pre>
+<p>Crea un nuevo proyecto y a continuación descarga descarga el modelo de informe usando la siguiente función en la consola:</p>
+<pre class="r"><code>download.file(&quot;https://raw.githubusercontent.com/EstadisticaUNTDF/05-Regresion/master/rmd/lab1.Rmd&quot;, destfile = &quot;lab1.Rmd&quot;)</code></pre>
 <div id="bateando" class="section level1">
 <h1>Bateando</h1>
 <p>En la película Moneyball un entrenador usa la estadística para hacer que un equipo de bajo presupuesto logre ganar. Para hacerlo, usa la estadísticas poco usadas como la habilidad de un jugador para robar una base en vez para predecir mejor la habilidad de anotar entradas que otras más comunes como home runs, carreras impulsadas y el promedio de bateo. Al obtener jugadores que eran excelentes en esas estadísticas poco usadas fue mucho más rentable para el equipo.</p>
@@ -143,6 +144,8 @@ número de carreras anotadas?</code></pre>
 <div id="suma-de-cuadrados-residuales" class="section level2">
 <h2>Suma de cuadrados residuales</h2>
 <p>En esta sección vamos a usar una función interactiva para investigar que a que nos referimos con la “suma de cuadrados residuales”. Es necesario que ejecutes la función en la consola y no en el documento de markdown. Al correr la función también es necesario el conjunto de datos mlb11 esté cargado en el espacio de trabajo.</p>
+<p>Para cargarla ejecuta en la consola el siguiente código:</p>
+<pre class="r"><code>source(url(&quot;https://raw.githubusercontent.com/StatsWithR/statsr/master/R/plot_ss.R&quot;))</code></pre>
 <p>Piensa la forma en que describimos la distribución de una sola variable. Recuerda que discutimos características como el centro, la dispersión y la forma. También es útil ser capaz de describir la relación entre dos variables numéricas, tales como <code>runs</code> y <code>at_bats</code> arriba.</p>
 <pre><code>##Ejercicio 2
 
@@ -228,6 +231,8 @@ de variabilidad constante?</code></pre>
 <p>Revisemos el nuevo modelo.</p>
 <pre class="r"><code>summary(m2)</code></pre>
 <p>Como en el modelo simple tenemos arriba la formula que produjo el modelo. Debajo tenemos 5 números que resumen los residuales. Luego la tabla de coeficientes, primero la ordenada al origen (“Intercept”), después la pendiente de <code>at_bats</code> y luego la pendiente de <code>homeruns</code>. Además nos dice si las pendientes y ordenadas al origen son significativamente distintas de 0. Abajo del todo, aparecen 3 datos: la suma de residuales del modelo y sus grados de libertad, luego el <span class="math inline">\(R^2\)</span> seguido de <span class="math inline">\(\bar R^2\)</span> (R cuadrado ajustado) recordemos que si añadimos variables regresoras al modelo por azar puede aumentar <span class="math inline">\(R^2\)</span> y <span class="math inline">\(\bar R^2\)</span> corrije esto penalizando por cada nueva variable regresora que agregamos. Luego tenemos el estadístico F que prueba la significancia del modelo completo.</p>
+<p>En este caso la ecuación que nos define la nueva recta o mejor dicho plano de ajuste está dada por:</p>
+<p><span class="math display">\[\hat y = -1613.99 + 0.3761\times at\_bats+1.5167 \times homeruns\]</span></p>
 <p>El diagnóstico del modelo se prueba de igual manera que en el caso de regresión lineal simple, pero además hay que ver que no hay colinealidad entre las variables predictoras. Esto lo podemos ver de la misma forma que vemos si hay linealidad entre carreras y bateo, solo que cambiando la variable.</p>
 <pre class="r"><code>ggplot(mlb11, aes(x = at_bats, y = homeruns)) +
   geom_point()</code></pre>
@@ -244,6 +249,8 @@ homeruns?
 <p>Ahora que podes resumir la relación lineal entre dos variables, investiga la relación entre carreras y las otras cinco variables tradicionales. ¿Cuál de las variables predice mejor las carreras? Apoya tus conclusiones usando los métodos gráficos y numéricos que discutimos (por brevedad, solo incluye la salida de la mejor variable, no las cinco).</p>
 <p>Ahora examina las tres nuevas variables. Estas son las estadísticas usados por el autor de Moneyball para predecir el éxito de un equipo. En general, ¿tienen mejor o peor efectividad prediciendo carreras que las viejas variables? Explica usando los métodos gráficos y numéricos apropiados. De las diez variables que analizamos ¿Cuál parece ser la mejor predictora de carreras? Usando la limitada información que sabes de estas estadísticas de béisbol ¿tienen sentido tus resultados?</p>
 <p>Prueba los diagnósticos de modelo para la regresión con la variable que decidiste que es la mejor predictora de carreras.</p>
+<p>Crea un modelo de regresión lineal múltiple entre las dos variables que mejor predicen los resultados.</p>
+<p>Prueba los diagnósticos para este modelo y que no haya colinealidad entre las variables predictoras.</p>
 </div>
 
 

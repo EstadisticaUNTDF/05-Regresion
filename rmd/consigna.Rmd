@@ -7,8 +7,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-download.file("http://stat.duke.edu/courses/Spring16/sta101.001/rmd/lab9.Rmd", destfile = "lab9.Rmd")
+Crea un nuevo proyecto y a continuación descarga descarga el modelo de informe 
+usando la siguiente función en la consola:
+
+```{r eval=FALSE}
+download.file("https://raw.githubusercontent.com/EstadisticaUNTDF/05-Regresion/master/rmd/lab1.Rmd", destfile = "lab1.Rmd")
 ```
 
 #Bateando
@@ -74,6 +77,13 @@ nos referimos con la "suma de cuadrados residuales". Es necesario que ejecutes
 la función en la consola y no en el documento de markdown. 
 Al correr la función también es necesario el conjunto de datos mlb11 esté
 cargado en el espacio de trabajo.
+
+Para cargarla ejecuta en la consola el siguiente código:
+
+```{r eval=FALSE}
+source(url("https://raw.githubusercontent.com/StatsWithR/statsr/master/R/plot_ss.R"))
+```
+
 
 Piensa la forma en que describimos la distribución de una sola variable. Recuerda
 que discutimos características como el centro, la dispersión y la forma. También
